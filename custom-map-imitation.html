@@ -1,1 +1,34 @@
-# custom-map
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Имитация google карты</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([40.462526, 72.771473], 16); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var houseIcon = L.icon({
+            iconUrl: './home.png', 
+            iconSize: [50, 50],
+            iconAnchor: [25, 50]
+        });
+
+        var houseMarker = L.marker([40.462526, 72.771473], { icon: houseIcon }).addTo(map)
+            .bindPopup("Фундамент для видимости!").openPopup();
+    </script>
+</body>
+</html>
+<!-- 40.462526, 72.771473 -->
